@@ -1,4 +1,7 @@
 var express = require('express');
+var authentification = require('./core/middlewares').authentification;
+
+
 var app = express();
 
 app.get('/', function (req, res) {

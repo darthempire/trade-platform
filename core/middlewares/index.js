@@ -1,0 +1,1 @@
+exports.authentification = require('../middlewares/authentication');
