@@ -1,0 +1,4 @@
+{
+    "connectionString": "mongodb://localhost/trade-platform-dev",
+    "secret": "1337"
+}
