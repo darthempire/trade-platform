@@ -1,5 +1,5 @@
 // middleware for doing role-based permissions
-export default function permit(...allowed) {
+module.exports = function permit(...allowed) {
     const isAllowed = role => allowed.indexOf(role) > -1;
     
     // return a middleware

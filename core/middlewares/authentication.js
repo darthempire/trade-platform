@@ -1,9 +1,9 @@
 // middleware for authentication
-module.exports =  function authorize(req, res, next) {
+module.exports = function authorize(req, res, next) {
     const apiToken = req.headers['x-api-token'];
     
     // get the user
-    request.user = new {
+    req.user = new {
         name: 'Vasya',
         role: 'owner'
     };
