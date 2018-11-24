@@ -1,6 +1,10 @@
 require('rootpath')();
 var express = require("express");
 
+var permit = require("./middlewares").permit;
+var authenticate = require("./middlewares").authentification;
+
+
 var app = express(),
     api = express.Router();
 
@@ -16,8 +20,12 @@ app.use(cors());
 // use JWT auth to secure the api
 app.use(jwt());
 
+// authenticate each request
+// will set `request.user`
+app.use(authenticate);
+
 // api routes
-app.use('/users', require('./core/users/users.controller'));
+app.use('/users', permit('owner'), require('./core/users/users.controller'));
 
 // global error handler
 app.use(errorHandler);
