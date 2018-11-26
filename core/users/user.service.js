@@ -8,7 +8,6 @@ module.exports = {
     authenticate,
     getAll,
     getById,
-    getByToken,
     create,
     update,
     delete: _delete
@@ -73,8 +72,4 @@ async function update(id, userParam) {
 
 async function _delete(id) {
     await User.findByIdAndRemove(id);
-}
-
-async function getByToken(token) {
-    return await User.findOne({ token:  token}).select('-hash');
 }

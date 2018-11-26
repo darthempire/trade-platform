@@ -5,8 +5,7 @@ var permit = require("./middlewares").permit;
 var authenticate = require("./middlewares").authentification;
 
 
-var app = express(),
-    api = express.Router();
+var app = express();
 
 const cors = require('cors');
 const bodyParser = require('body-parser');
@@ -25,7 +24,8 @@ app.use(jwt());
 app.use(authenticate);
 
 // api routes
-app.use('/users', permit('owner'), require('./core/users/users.controller'));
+app.use('/users', require('./core/users/users.controller'));
+app.use('/companies', require('./core/companies/companies.controller'));
 
 // global error handler
 app.use(errorHandler);
@@ -33,6 +33,6 @@ app.use(errorHandler);
 
 // start server
 const port = process.env.NODE_ENV === 'production' ? 80 : 4000;
-const server = app.listen(port, function () {
+app.listen(port, function () {
     console.log('Server listening on port ' + port);
 });

@@ -4,5 +4,6 @@ mongoose.connect(config.connectionString);
 mongoose.Promise = global.Promise;
 
 module.exports = {
-    User: require("../core/users/user.model")
+    User: require("../core/users/user.model"),
+    Company: require("../core/companies/company.model"),
 };

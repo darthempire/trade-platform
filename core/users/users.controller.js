@@ -1,11 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const userService = require('./user.service');
+var permit = require("../../middlewares").permit;
 
 // routes
 router.post('/authenticate', authenticate);
 router.post('/register', register);
-router.get('/', getAll);
+router.get('/', permit('owner'), getAll);
 router.get('/current', getCurrent);
 router.get('/:id', getById);
 router.put('/:id', update);
@@ -32,7 +33,7 @@ function getAll(req, res, next) {
 }
 
 function getCurrent(req, res, next) {
-    userService.getById(req.user.sub)
+    userService.getById(req.user._id)
         .then(user => user ? res.json(user) : res.sendStatus(404))
         .catch(err => next(err));
 }

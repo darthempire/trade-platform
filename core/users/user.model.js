@@ -9,7 +9,8 @@ const schema = new Schema({
     role: { type: String, required: true },
     createdDate: { type: Date, default: Date.now },
     token: { type: String },
-    tokenCreatedDate: { type: Date}
+    tokenCreatedDate: { type: Date},
+    company: { type: Schema.ObjectId, ref: 'Company' }
 });
 
 schema.set('toJSON', { virtuals: true });
