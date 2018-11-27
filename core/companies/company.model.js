@@ -9,6 +9,7 @@ const schema = new Schema({
     address: { type: String, required: true },
     phone: { type: String, required: true },
     email: { type: String, required: true },
+    logoPath: { type: String, required: true },
     directorFirstName: { type: String, required: true },
     directorLastName: { type: String, required: true },
     legalFormOfOrganization: { type: String, required: true },

@@ -9,7 +9,7 @@ router.get('/', permit('owner'), getAll);
 router.get('/current', permit('admin'), getCurrent);
 router.get('/:id', getById);
 router.put('/:id', permit('admin'), update);
-router.delete('/:id',permit('admin'),  _delete);
+router.delete('/:id', permit('admin'),  _delete);
 
 module.exports = router;
 

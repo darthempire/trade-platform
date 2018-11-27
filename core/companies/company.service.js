@@ -34,14 +34,16 @@ async function update(id, params) {
 
     // validate
     if (!company) throw 'Company not found';
-    if (company.username !== params.companyName && await User.findOne({ companyName: params.companyName })) {
+    if (company.companyName !== params.companyName && await User.findOne({ companyName: params.companyName })) {
         throw 'Company Name "' + params.companyName + '" is already taken';
     }
+
+    params.updateDate = Date.now();
 
     // copy params properties to company
     Object.assign(company, params);
 
-    await Company.save();
+    await company.save();
 }
 
 async function _delete(id) {
